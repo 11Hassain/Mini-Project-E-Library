@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+	<script>
+		function validateForm() {
+			let fname = document.forms["myForm"]["fname"].value;
+			function validateEmail(){
+				var eid = document.myForm.eid.value;
+				var atpos = eid.indexOf('@');
+				var dotpos = eid.lastIndexOf('.');
+				if(eid.length==0){
+					alert("Email should not be empty!");
+				}
+				else if(atpos<1||dotpos<(atpos+3)||(dotpos+3)>=eid.length){ return true; }
+			}
+			if (fname == "") {
+				alert("Name must be filled out");
+				return false;
+			}
+			else if(validateEmail()){
+				alert("Invalid email");
+			}
+		}
+	</script>
+</head>
+<body>
+	<style>
+	body{
+		background-image: url('canteen_blur.jpg');
+		background-repeat: no-repeat;
+		background-attachment:fixed;
+		background-size: cover;
+	}
+	.he1{
+		font-family:"Lucida Console", "Courier New", monospace;;
+		text-align:center;
+		color: goldenrod;
+		font-size:80px;
+		float: center;
+	}
+	
+			 /* Style inputs, select elements and textareas */
+		input[type=text], select, textarea{
+		  width: 100%;
+		  padding: 12px;
+		  border: 1px solid #ccc;
+		  border-radius: 3px;
+		  box-sizing: border-box;
+		  resize: vertical;
+		}
+
+		/* Style the label to display next to the inputs */
+		label {
+		  padding: 12px 12px 12px 0;
+		  display: inline-block;
+		  font-family: Arial;
+		  font-weight: bold;
+		}
+
+		/* Style the submit button */
+		input[type=submit] {
+		  background-color: #146ca4;
+		  color: white;
+		  padding: 12px 20px;
+		  border: none;
+		  border-radius: 4px;
+		  cursor: pointer;
+		  float: center;
+		}
+		
+
+		/* Style the container */
+		.container {
+		  border-radius: 10px;
+		  background-color: #add8e6/*#f2f2f2*/;
+		  padding: 20px;
+		  margin: 0 auto; width: 1000px;
+		}
+
+		/* Floating column for labels: 25% width */
+		.col-25 {
+		  float: left;
+		  width: 20%;
+		  margin-top: 6px;
+		}
+
+		/* Floating column for inputs: 75% width */
+		.col-75 {
+		  float: left;
+		  width: 75%;
+		  margin-top: 6px;
+		}
+		
+		/* Floating column for inputs: 75% width */
+		.col-75-1 {
+		  float: left;
+		  width: 75%;
+		  margin-top: 6px;
+		  font-size: 15px;
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+		  content: "";
+		  display: table;
+		  clear: both;
+		}
+
+		/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+		@media screen and (max-width: 600px) {
+		  .col-25, .col-75, input[type=submit] {
+			width: 100%;
+			margin-top: 0;
+		  }
+		}
+
+	</style>
+	<a href="form1.html"><img src="d.jpg" height="70" width="90"></a>
+	<p class="he1"><b>DE
+		<font color="black">CROWDY</b></font>
+	</p>
+
+	
+	<center>
+	<p class='msg' style="font-size:60px; font-family:Arial;">Welcome</p>
+	   <div class="container">
+	  <form name="myForm" action="action_page.php" onsubmit="return validateForm()">
+		<div class="row">
+		  <div class="col-25">
+			<label for="fname">Full Name</label>
+		  </div>
+		  <div class="col-75">
+			<input type="text" id="fname" name="fname" placeholder="Enter your full name">
+		  </div>
+		</div>
+		<br>
+		<div class="row">
+		  <div class="col-25">
+			<label for="eid">Email ID</label>
+		  </div>
+		  <div class="col-75">
+			<input type="text" id="eid" name="eid" placeholder="Enter your email">
+		  </div>
+		</div>
+		<br>
+		<div class="row">
+		  <div class="col-25">
+			<label for="gender">Gender</label>
+		  </div>
+		  <div class="col-75">
+			<select id="gender" name="country">
+			  <option value="male">Male</option>
+			  <option value="female">Female</option>
+			  <option value="other">Others</option>
+			</select>
+		  </div>
+		</div>
+		<br>
+		<div class="row">
+		  <div class="col-25">
+			<label for="menu">Menu</label>
+		  </div>
+		  <div class="col-75-1" align="left">
+			
+			<input type="radio" id="veg" name="menu" value="Veg" checked>
+			<label for="veg">Veg</label><br>
+			<input type="radio" id="nonveg" name="menu" value="Non-Veg">
+			<label for="nonveg">Non-veg</label><br>
+			<input type="radio" id="combo" name="menu" value="Combo">
+			<label for="combo">Combo</label><br>
+			
+			<input type="button" id="clear-button" value="Clear Selection" style="color: black">
+			<script type="text/javascript">
+				document.getElementById('clear-button').addEventListener('click', function () {
+				  ["veg", "nonveg", "combo"].forEach(function(id) {
+					document.getElementById(id).checked = false;
+				  });
+				  return false;
+				})
+			 </script>
+		
+		<!--	<select id="country" name="country">
+			  <option value="veg">Veg</option>
+			  <option value="nonveg">Non-veg</option>
+			</select>
+		-->
+		<!--	<script>
+				document.querySelector('input[name="menu"]:checked').checked = false;
+			</script>
+		-->
+			
+		  </div>
+		</div>
+		<br>
+		<div class="row">
+		  <div class="col-25">
+			<label for="extra">Extras</label>
+		  </div>
+		  <div class="col-75">
+			<textarea id="extra" name="extra" placeholder="Write what else you want to add to your order.." style="height:100px"></textarea>
+		  </div>
+		</div>
+		<br>
+		<div class="row">
+		  <input type="submit" value="Generate Token">
+		</div>
+	  </form>
+	</div> 
+  </center>
+  
+  
+</body>
+</html>
